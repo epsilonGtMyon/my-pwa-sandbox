@@ -1,0 +1,13 @@
+{
+  "name": "my-pwa-sandbox",
+  "short_name": "my-pwa",
+  "start_url": "/my-pwa-sandbox/index.html",
+  "display": "standalone",
+  "icons": [
+    {
+       "src": "./icon.png",
+       "type": "image/png",
+       "sizes": "144x144"
+    }
+ ]
+}
