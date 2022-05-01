@@ -3,6 +3,12 @@ const prefix = isLocal ? '' : '/my-pwa-sandbox/'
 
 self.addEventListener("install", event => {
   console.log("Service worker installed", event);
+
+  const addResourcesToCache = async (resources) => {
+    console.log("resources", resources)
+    const cache = await caches.open("v1");
+    await cache.addAll(resources);
+  };
   
   event.waitUntil(
     addResourcesToCache([
