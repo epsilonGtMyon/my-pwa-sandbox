@@ -8,17 +8,6 @@
 
   <script src="./script.js" defer></script>
   <title>連打するだけ</title>
-  <script>
-    if ("serviceWorker" in navigator) {
-      const isLocal = location.hostname === 'localhost'
-      console.log('isLocal', isLocal)
-      if (isLocal) {
-        navigator.serviceWorker.register("./sw.js");
-      } else {
-        navigator.serviceWorker.register("./sw.js", {scope: '/my-pwa-sandbox/'});
-      }
-    }
-  </script>
 </head>
 <body>
   <button id="increment">連打</button>

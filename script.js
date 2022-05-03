@@ -10,10 +10,11 @@
 
   if ("serviceWorker" in navigator) {
     const isLocal = location.hostname === 'localhost'
+    console.log('isLocal', isLocal)
     if (isLocal) {
       navigator.serviceWorker.register("./sw.js");
     } else {
-      navigator.serviceWorker.register("/my-pwa-sandbox/sw.js", {scope: '/my-pwa-sandbox/'});
+      navigator.serviceWorker.register("./sw.js", {scope: '/my-pwa-sandbox/'});
     }
   }
 })();
