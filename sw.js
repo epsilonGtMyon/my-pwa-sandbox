@@ -1,7 +1,7 @@
 const cacheName = 'V1'
 const isLocal = location.hostname === 'localhost'
-//const prefix = isLocal ? '/' : '/my-pwa-sandbox/'
-const prefix = '/'
+const prefix = isLocal ? '/' : '/my-pwa-sandbox/'
+
 
 self.addEventListener("install", event => {
   console.log("===========Service worker installed===========", event);
