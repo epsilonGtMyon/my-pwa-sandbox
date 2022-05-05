@@ -1,9 +1,14 @@
 (function () {
   const title = "my-pwa-sandbox"
+  const isLocal = location.hostname === 'localhost'
+  const prefix = isLocal ? '/' : '/my-pwa-sandbox/'
+
   const incrementElem = document.querySelector("#increment");
   const countElem = document.querySelector("#count");
   const notification1ButtonElem = document.querySelector("#notification1Button");
   const notification2ButtonElem = document.querySelector("#notification2Button");
+
+  const toResourceUrl = (path) => `${prefix}${path}`
 
   async function isEnabledNotification() {
     if (Notification.permission === "granted") {
@@ -26,8 +31,8 @@
     const serviceWorkerRegistration = await navigator.serviceWorker.ready
     serviceWorkerRegistration.showNotification(title, {
       body: "通知のテストです",
-      //image: '/notification.png',やたら大きいイラスト通知エリアにでてくる
-      icon: "/notification.png",
+      image: toResourceUrl(`notification.png`),//やたら大きいイラスト通知エリアにでてくる
+      icon: toResourceUrl(`notification.png`),
     });
   });
 
@@ -47,7 +52,7 @@
 
       serviceWorkerRegistration.showNotification(title, {
         body: `通知のテストです[${counter}]`,
-        icon: "/notification.png",
+        icon: toResourceUrl(`notification.png`),
         tag: "button2", //タグをつけると グルーピングできるっぽい,
         renotify: true, //タグ付けた場合はONにしておいたほうがいいかも、じゃないと古いのが画面に残る
       });

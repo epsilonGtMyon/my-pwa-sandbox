@@ -11,15 +11,18 @@ self.addEventListener("install", event => {
     const cache = await caches.open(cacheName);
     await cache.addAll(resources);
   };
+
+  const resources = [
+    ``,
+    `index.html`,
+    `script.js`,
+    `icon.png`,
+    `notification.png`,
+    `manifest.json`,
+  ].map(x => `${prefix}${x}`)
   
   event.waitUntil(
-    addResourcesToCache([
-      `${prefix}`,
-      `${prefix}index.html`,
-      `${prefix}script.js`,
-      `${prefix}icon.png`,
-      `${prefix}manifest.json`,
-    ])
+    addResourcesToCache(resources)
   );
 });
 self.addEventListener("activate", event => {
